@@ -4,10 +4,17 @@ public class Banana extends Actor
 {
     public void act()
     {
-        move(-30);
+        move(-50);
         
         if(getX() <= 0) {
             resetBanana();
+        }
+        
+        if(isTouching(Hero.class)){
+            //add a game over symbol
+            Bomb bomb = new Bomb();
+            getWorld().addObject(bomb, 300, 200);
+            getWorld().removeObject(this);
         }
     }
     
